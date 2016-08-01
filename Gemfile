@@ -31,6 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'yelp', require: 'yelp'
 gem 'httparty'
+gem "omniauth"
+gem "omniauth-google-oauth2"
 # Use Unicorn as the app server
 # gem 'unicorn'
 

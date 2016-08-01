@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
 
   resources :providers
+
+  get "/logout" => "sessions#destroy", as: :logout
+  get "/auth/:provider/callback" => "sessions#create"
+
     # post '/search_result' => 'providers#search_result'
 
   # Example of regular route:
