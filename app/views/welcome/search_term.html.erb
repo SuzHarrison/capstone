@@ -1,0 +1,15 @@
+<% if @results %>
+  <% @results.businesses.each do |business|%>
+  <p><%= business.name %><br>
+    <%= business.rating %><br>
+    <% business.location.display_address.each do |line| %>
+      <%= line %><br>
+    <% end %><br>
+    <%= business.phone %><br>
+    <%= business.snippet_text %><br>
+    <%= image_tag business.image_url %></p>
+
+  <br>
+
+  <% end %>
+<% end %>

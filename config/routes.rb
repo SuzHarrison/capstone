@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   resources :providers
 
+
   get "/logout" => "sessions#destroy", as: :logout
   get "/auth/:provider/callback" => "sessions#create"
+
+  post '/welcome' => "welcome#search_term", as: :search_term
 
     # post '/search_result' => 'providers#search_result'
 

@@ -1,7 +1,15 @@
 <h1>Welcome!</h1>
 
  <h3>Look for a provider in your area</h3>
- <form>
-   Search by Zip:
-   <input type="search" name="zipsearch">
- </form>
+
+   Enter your search term:
+
+
+
+<%= form_tag search_term_path, class: "input-group input-group-lg" do  %>
+<%= text_field_tag :city, nil, class: 'form-control', placeholder: 'city' %>
+<%= text_field_tag :category, nil, class: 'form-control', placeholder: 'category' %>
+
+<span class="input-group-btn">
+ <%= submit_tag "Search", class: 'btn btn-default'%>
+<% end %>
