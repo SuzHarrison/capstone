@@ -6,12 +6,24 @@ class WelcomeController < ApplicationController
   end
 
   def search_term
+    care_types = {
+      "Home Health Care" => "homehealthcare",
+      "Assisted Living Facilities" => "assistedliving",
+      "Retirement Homes" => "retirement_homes"
+    }
+
+    query = params[:category]
+
+    if query
+      converted_search_query = care_types[query]
+    end
+
     all_data = {
            limit: 20,
-           category_filter: (params[:category]).downcase.gsub(/\s/, ""),
+           category_filter: converted_search_query
          }
 
     @results = Yelp.client.search(params[:city], all_data)
-    # render :index
+    render :index
   end
 end

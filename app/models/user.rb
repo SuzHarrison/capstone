@@ -10,10 +10,11 @@ class User < ActiveRecord::Base
        return user
      else
        user = User.new
-       user.provider = auth_hash["provider"]
-       user.uid = auth_hash["uid"]
-       user.name = auth_hash["info"]["name"]
-       user.email = auth_hash["info"]["email"]
+       user.provider  = auth_hash["provider"]
+       user.uid       = auth_hash["uid"]
+       user.name      = auth_hash["info"]["name"]
+       user.email     = auth_hash["info"]["email"]
+       user.image     = auth_hash["info"]["image"]
      end
        if user.save
          return user

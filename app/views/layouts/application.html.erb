@@ -17,6 +17,7 @@
   <div>
     <% if current_user %>
     Signed in as <strong><%= current_user.name %></strong>!
+    <%= image_tag current_user.image, class: "img-responsive", style: "height: 7rem; width: 7rem" %>
     <%= link_to "Sign out", logout_path, id: "sign_out" %>
     <% end %>
     <% unless current_user %>

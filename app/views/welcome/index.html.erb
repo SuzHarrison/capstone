@@ -2,14 +2,41 @@
 
  <h3>Look for a provider in your area</h3>
 
-   Enter your search term:
+ Enter your search term:
+ <%= form_tag search_term_path, class: "navbar-form navbar-left" do  %>
+   <%= text_field_tag :city, nil, class: 'form-control', placeholder: 'city' %>
+   <%= text_field_tag :category, nil, class: 'form-control', placeholder: 'category' %><br>
+
+   <%= radio_button_tag 'category', 'Home Health Care', false, class: "custom-control-input"%>
+   <%= label_tag(:category, "Home Health Care") %><br>
+
+   <%= radio_button_tag 'category', "Assisted Living Facilities", false, class: "custom-control-input"%>
+   <%= label_tag(:category, "Assisted Living Facilities") %><br>
+
+   <%= radio_button_tag 'category', "Retirement Homes", false, class: "custom-control-input"%>
+   <%= label_tag(:category, "Retirement Homes") %><br>
 
 
+   <span class="input-group-btn">
+     <%= submit_tag "Search", class: 'btn btn-default'%>
+   </span>
+ <% end %>
 
-<%= form_tag search_term_path, class: "input-group input-group-lg" do  %>
-<%= text_field_tag :city, nil, class: 'form-control', placeholder: 'city' %>
-<%= text_field_tag :category, nil, class: 'form-control', placeholder: 'category' %>
-
-<span class="input-group-btn">
- <%= submit_tag "Search", class: 'btn btn-default'%>
+<% if @results %>
+<div>
+  <ul>
+    <% @results.businesses.each do |business|%>
+     <li><%= business.name %><br>
+     <%= image_tag business.rating_img_url %><br>
+     <%= "Category: " + business.categories[0][0] %><br>
+     <% business.location.display_address.each do |line| %>
+      <%= line %><br>
+     <% end %><br>
+     <%= business.phone %><br>
+     <%= business.snippet_text %><br>
+     <%= image_tag business.image_url %>
+     <%= link_to "see reviews", business.url %></p>
+    <% end %>
+  </ul>
+</div>
 <% end %>
