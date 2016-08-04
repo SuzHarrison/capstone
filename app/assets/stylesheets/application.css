@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .picprofile {
+   border-radius: 50%;
+   height: 50px;
+   width: 50px;
+ }
+
+ .name {
+   color: grey;
+ }
+
+ .google_login {
+   float: right;
+ }
+
+ .landing_body {
+   text-align: center;
+ }
+
+ .care_button {
+   font-size: 2rem;
+ }
