@@ -1,2 +1,16 @@
-<h1>providers#show</h1>
-<p>Find me in app/views/providers/show.html.erb</p>
+<% if @result %>
+  <div>
+    <ul>
+      <h2><small><%= @result.business.name %><br></small></h2>
+      <%= image_tag @result.business.rating_img_url %><br>
+      <%= "Category: " + @result.business.categories[0][0] %><br>
+      <% @result.business.location.display_address.each do |line| %>
+        <%= line %><br>
+      <% end %><br>
+      <%= @result.business.phone %><br>
+      <%= @result.business.snippet_text %><br>
+      <%= image_tag @result.business.image_url %>
+      <%= link_to "See More Reviews on Yelp", @result.business.url %></p>
+    </ul>
+  </div>
+<% end %>

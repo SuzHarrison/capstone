@@ -1,17 +1,1 @@
-<% if @results %>
-  <% @results.businesses.each do |business|%>
-  <h3><%= business.name %></h3><br>
-    <%= image_tag business.image_url %><br>
-    <%= "Category: " + business.categories[0][0] %><br>
-    <%= image_tag business.rating_img_url %><br>
-    <% business.location.display_address.each do |line| %>
-      <%= line %><br>
-    <% end %>
-    <%= business.phone %><br>
-    <%= business.snippet_text %><br>
-    <%= link_to "see reviews", business.url %>
-  </p>
 
-  <br>
-  <% end %>
-<% end %>

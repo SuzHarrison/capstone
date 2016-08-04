@@ -19,6 +19,7 @@
    border-radius: 50%;
    height: 50px;
    width: 50px;
+   float: right;
  }
 
  .name {
@@ -33,6 +34,10 @@
    text-align: center;
  }
 
- .care_button {
-   font-size: 2rem;
+ .navbar-static-bottom#footer {
+   text-align: center;
  }
+
+ /*.care_button {
+   font-size: 2rem;
+ }*/

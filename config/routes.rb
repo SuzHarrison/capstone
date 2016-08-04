@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   post '/welcome' => "welcome#search_term", as: :search_term
 
+
+
     # post '/search_result' => 'providers#search_result'
 
   # Example of regular route:

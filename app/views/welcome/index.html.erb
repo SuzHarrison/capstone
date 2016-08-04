@@ -36,6 +36,7 @@
      <%= business.snippet_text %><br>
      <%= image_tag business.image_url %>
      <%= link_to "see reviews", business.url %></p>
+     <%= button_to "show more details", provider_path(business.id), method: :get %>
     <% end %>
   </ul>
 </div>
