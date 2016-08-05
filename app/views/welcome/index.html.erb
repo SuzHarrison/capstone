@@ -22,7 +22,10 @@
    <% end %>
 </div>
 
-<% if @results %>
+<% if @results == nil %>
+<% elsif @results.businesses.length == 0 %>
+  <p> Sorry </p>
+<% else %>
 <div>
   <ul>
     <% @results.businesses.each do |business|%>
