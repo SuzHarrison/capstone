@@ -2,14 +2,19 @@
   <div>
     <ul>
       <h2><small><%= @result.business.name %><br></small></h2>
+      <%= image_tag @result.business.image_url %><br>
       <%= image_tag @result.business.rating_img_url %><br>
+      <%= @result.business.location.display_address[0] %><br>
+      <%= @result.business.location.city %>, <%= @result.business.location.state_code %>   <%= @result.business.location.postal_code %><br>
+
+
+      <% unless @result.business.display_phone.nil? %>
+        <%= link_to "tel:#{@result.business.display_phone[3..-1]}" do%>
+        <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
+        <% end %>
+      <% end %>
+      <%= @result.business.display_phone[3..-1] %><br>
       <%= "Category: " + @result.business.categories[0][0] %><br>
-      <% @result.business.location.display_address.each do |line| %>
-        <%= line %><br>
-      <% end %><br>
-      <%= @result.business.phone %><br>
-      <%= @result.business.snippet_text %><br>
-      <%= image_tag @result.business.image_url %>
       <%= link_to "See More Reviews on Yelp", @result.business.url %></p>
     </ul>
   </div>
