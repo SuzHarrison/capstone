@@ -61,22 +61,22 @@ end
 favorites = [
   {
     user_id: 1,
-    provider_id: 1,
+    provider_id: "synergy-home-care-seattle-3",
     notes: "Great personable staff and excellent reviews. Deb's grandmother was happy with them."
   },
   {
     user_id: 2,
-    provider_id: 2,
+    provider_id: "husky-senior-care-seattle",
     notes: "This service is fantastic! They are especially helpful at referrals."
   },
   {
     user_id: 3,
-    provider_id: 3,
+    provider_id: "a-helping-hand-homecare-seattle-2",
     notes: "Great staff-visit scheduled."
   },
   {
     user_id: 2,
-    provider_id: 3,
+    provider_id: "eldercare-consulting-seattle",
     notes: "This service is great for dad."
   }
 ]

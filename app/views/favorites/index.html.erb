@@ -1,3 +1,11 @@
-<h1>testing favorites index</h1>
-<%= @favorites %>
-<%= @favorites %>
+<div>
+  <h2><%= current_user.name %>'s Saved Providers</h2>
+  <ul>
+    <% @favorites.each do |favorite| %>
+    <li><%= favorite.provider_id %></li>
+     <% unless favorite.notes == nil %>
+      <li><%= "Notes: " + favorite.notes %>
+     <% end %>
+    <% end %><br>
+  </ul>
+</div>

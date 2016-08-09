@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   def index
     @user = params[:user_id]
     @provider = Provider.where(yelp_id: (params[:provider_id]))
-    @favorites = Favorite.all.order('name ASC')
+    @favorites = Favorite.all
   end
 
   def create
@@ -15,8 +15,9 @@ class FavoritesController < ApplicationController
       provider_id: params[:provider_id]
       })
 
+
     if @favorite.save
-      redirect_to user_favorites_path(@user)
+      redirect_to user_favorites_path(@user, @provider)
     else
       render :index
     end
