@@ -16,6 +16,19 @@
       <%= @result.business.display_phone[3..-1] %><br>
       <%= "Category: " + @result.business.categories[0][0] %><br>
       <%= link_to "See More Reviews on Yelp", @result.business.url %></p>
+
+
+      <% if current_user %>
+        <%= link_to '<i class="fi-pencil"></i>'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %>
+      <% end %>
+      <% if @user_favorites == nil %>
+        <%= form_tag user_favorites_path(current_user.id), method: :post do %>
+          <%= hidden_field_tag 'provider_id', @result.business.id %>
+          <%= button_tag '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %>
+        <% end %>
+      <% else %>
+        <%= link_to '<i class="fi-trash"></i>'.html_safe, user_favorite_path(current_user.id, @result.business.id), method: :delete, class: "button info" %>
+      <% end %>
     </ul>
   </div>
 <% end %>
