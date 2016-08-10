@@ -51,7 +51,33 @@ providers = [
     yelp_id: "synergy-home-care-seattle-3",
     bed_count: 5,
     average_cost: 1700
-  }
+  },
+  {
+    yelp_id: "with-a-little-help-seattle",
+    bed_count: 4,
+    average_cost: 1800
+  },
+  {
+    yelp_id: "harvard-partners-home-health-seattle",
+    bed_count: 10,
+    average_cost: 2700
+  },
+  {
+    yelp_id: "heartland-home-health-care-seattle-2",
+    bed_count: 8,
+    average_cost: 2400
+  },
+  {
+    yelp_id: "fedelta-home-care-seattle-2",
+    bed_count: 3,
+    average_cost: 2400
+  },
+  {
+    yelp_id: "family-resource-home-care-seattle",
+    bed_count: 5,
+    average_cost: 2400
+  },
+
 ]
 
 providers.each do |p|

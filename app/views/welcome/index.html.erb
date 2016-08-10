@@ -30,6 +30,7 @@
   <ul>
     <% @results.businesses.each do |business|%>
      <li><%= business.name %><br>
+     <li><%= business.id %><br>
      <%= image_tag business.rating_img_url %><br>
      <%= "Category: " + business.categories[0][0] %><br>
      <% business.location.display_address.each do |line| %>

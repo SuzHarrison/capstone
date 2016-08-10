@@ -6,14 +6,29 @@
     <li><%= favorite.name%></li>
     <li><%= favorite.street%>, <%= favorite.city%></li>
     <li><%= favorite.display_phone%></li>
-
-      <% unless favorite.notes == nil %>
+    <%binding.pry%>
+      <li><% if favorite.notes %>
         <li><%= "Notes: " + favorite.notes %>
+      <% end %></li>
+
+      <%= form_for(favorite, url: user_favorite_path(favorite.user_id, favorite.id), html: {method: "patch"}) do |f| %>
+        <fieldset>
+          <h2>Enter a Note:</h2>
+          <div class="form-group">
+          <!-- <%= f.label :name %> -->
+          <%= f.text_field :notes, class: "form-control", label: false, placeholder: "enter any notes", :required => true %>
+          </div>
+          <%= f.hidden_field :user_id, :value => session[:user_id] %>
+        </fieldset>
+      <div class="submit"><%= f.submit class: "button info" %>
+      </div>
       <% end %>
 
-      <% if current_user %>
-        <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %>
-      <% end %><br>
+
+      <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %><br>
+
+
+
     <% end %><br>
   </ul>
 </div>

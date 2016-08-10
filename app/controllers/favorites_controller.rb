@@ -30,6 +30,16 @@ class FavoritesController < ApplicationController
     end
   end
 
+  def update
+    @favorite = Favorite.find(params[:id])
+    binding.pry
+    if @favorite.update(notes: params[:favorite][:notes])
+      redirect_to user_favorites_path, notice: 'Note was successfully updated.'
+    else
+      render :user_favorites_path
+    end
+  end
+
   def destroy
     @favorite = Favorite.where(user_id: params[:user_id], provider_id: params[:id])
     @user = User.find(params[:user_id])
