@@ -23,6 +23,13 @@
         <h1><a href="/">Beacon Senior Resources</a><br>
           <small>Helping families find the right senior care</small></h1>
       </div>
+
+      <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "My Account", user_favorites_path(current_user.id) if current_user %></li>
+        </ul>
+
       <div class ="google_login">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>

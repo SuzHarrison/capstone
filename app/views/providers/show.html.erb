@@ -19,15 +19,16 @@
 
 
       <% if current_user %>
-        <%= link_to '<i class="fi-pencil"></i>'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %>
+        <%= link_to '<i class="fi-pencil"></i> See my favorites'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %><br>
       <% end %>
-      <% if @user_favorites == nil %>
+      <% if current_user && (!current_user.favorited?(Provider.find_by(yelp_id: @result.business.id))) %>
         <%= form_tag user_favorites_path(current_user.id), method: :post do %>
-          <%= hidden_field_tag 'provider_id', @result.business.id %>
-          <%= button_tag '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %>
+          <%= hidden_field_tag 'provider_yelp_id', @result.business.id %>
+          <%= button_tag '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
         <% end %>
       <% else %>
-        <%= link_to '<i class="fi-trash"></i>'.html_safe, user_favorite_path(current_user.id, @result.business.id), method: :delete, class: "button info" %>
+      <% binding.pry%>
+        <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, @result.business.id), method: :delete, class: "button info" %>
       <% end %>
     </ul>
   </div>

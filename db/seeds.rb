@@ -53,6 +53,7 @@ providers = [
     average_cost: 1700
   }
 ]
+
 providers.each do |p|
   provider = Provider.new(p)
   provider.save(validate: false)
@@ -80,6 +81,7 @@ favorites = [
     notes: "This service is great for dad."
   }
 ]
+
 favorites.each do |f|
   favorite = Favorite.new(f)
   favorite.save(validate: false)

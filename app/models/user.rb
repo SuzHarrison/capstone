@@ -26,4 +26,7 @@ class User < ActiveRecord::Base
        end
      end
 
+    def favorited?(provider)
+      !Favorite.find_by(user: self, provider: provider).nil?
+    end
   end
