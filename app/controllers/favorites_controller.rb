@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @provider = Provider.where(yelp_id: (params[:provider_yelp_id])).first
+    @provider = Provider.find_or_create_by(yelp_id: (params[:provider_yelp_id]))
     @user = User.find(params[:user_id])
     if Favorite.find_by(user: @user, provider: @provider)
       flash[:notice] = 'This provider was already in your list'
@@ -21,7 +21,7 @@ class FavoritesController < ApplicationController
       provider_id: @provider.id
       })
 
-    if @favorite
+    if @favorite && @provider
       flash[:notice] = 'This provider was added to your list'
       redirect_to user_favorites_path(@user.id, @provider.id)
     else
