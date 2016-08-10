@@ -3,7 +3,7 @@
    <h3>Look for a provider in your area</h3>
 
    Enter your search term:
-   <%= form_tag search_term_path, class: "navbar-form navbar-left" do  %>
+   <%= form_tag search_term_path, method: "post", class: "navbar-form navbar-left" do  %>
      <%= text_field_tag :city, nil, class: 'form-control', placeholder: 'city' %><br>
 
      <%= radio_button_tag 'category', 'Home Health Care', false, class: "custom-control-input"%>

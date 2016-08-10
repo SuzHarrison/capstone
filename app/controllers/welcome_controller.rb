@@ -19,9 +19,9 @@ class WelcomeController < ApplicationController
     end
 
     all_data = {
-           limit: 20,
-           category_filter: converted_search_query
-         }
+     limit: 20,
+     category_filter: converted_search_query
+    }
 
     @results = Yelp.client.search(params[:city], all_data)
     render :index

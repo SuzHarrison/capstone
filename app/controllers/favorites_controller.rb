@@ -43,4 +43,4 @@ class FavoritesController < ApplicationController
     # rescue
     # flash[:notice] = 'This provider was not added to your list'
     # redirect_to user_favorites_path(current_user.id)
-  end
+end

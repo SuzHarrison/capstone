@@ -16,9 +16,8 @@ class ProvidersController < ApplicationController
   #   return self.new(business)
   # end
 
-
   def show
-    @result = Yelp.client.business(params[:id])
+    @result = Provider.find(params[:id])
     # @result = Provider.create(params[:id])
     render :show
   end

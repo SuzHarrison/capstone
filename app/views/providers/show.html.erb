@@ -1,34 +1,33 @@
 <% if @result %>
   <div>
     <ul>
-      <h2><small><%= @result.business.name %><br></small></h2>
-      <%= image_tag @result.business.image_url %><br>
-      <%= image_tag @result.business.rating_img_url %><br>
-      <%= @result.business.location.display_address[0] %><br>
-      <%= @result.business.location.city %>, <%= @result.business.location.state_code %>   <%= @result.business.location.postal_code %><br>
+      <h2><small><%= @result.name %><br></small></h2>
+      <%= image_tag @result.image_url %><br>
+      <%= image_tag @result.rating_img_url %><br>
+      <%= @result.street %><br>
+      <%= @result.city %>, <%= @result.state_code %> <%= @result.postal_code %><br>
 
 
-      <% unless @result.business.display_phone.nil? %>
-        <%= link_to "tel:#{@result.business.display_phone[3..-1]}" do%>
+      <% unless @result.display_phone.nil? %>
+        <%= link_to "tel:#{@result.display_phone}" do%>
         <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
         <% end %>
       <% end %>
-      <%= @result.business.display_phone[3..-1] %><br>
-      <%= "Category: " + @result.business.categories[0][0] %><br>
-      <%= link_to "See More Reviews on Yelp", @result.business.url %></p>
+      <%= @result.display_phone %><br>
+      <%= "Category: " + @result.category %><br>
+      <%= link_to "See More Reviews on Yelp", @result.bus_url %></p>
 
 
       <% if current_user %>
         <%= link_to '<i class="fi-pencil"></i> See my favorites'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %><br>
       <% end %>
-      <% if current_user && (!current_user.favorited?(Provider.find_by(yelp_id: @result.business.id))) %>
+      <% if current_user && (!current_user.favorited?(@result)) %>
         <%= form_tag user_favorites_path(current_user.id), method: :post do %>
-          <%= hidden_field_tag 'provider_yelp_id', @result.business.id %>
+          <%= hidden_field_tag 'provider_yelp_id', @result.id %>
           <%= button_tag '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
         <% end %>
       <% else %>
-      <% binding.pry%>
-        <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, @result.business.id), method: :delete, class: "button info" %>
+        <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, @result.id), method: :delete, class: "button info" %>
       <% end %>
     </ul>
   </div>
