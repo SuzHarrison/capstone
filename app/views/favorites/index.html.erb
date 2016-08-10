@@ -4,7 +4,7 @@
     <% @favorites.each do |favorite| %>
     <%= image_tag favorite.image_url %><br>
     <li><%= favorite.name%></li>
-    <li><%= favorite.street%>, <%= favorite.street%></li>
+    <li><%= favorite.street%>, <%= favorite.city%></li>
     <li><%= favorite.display_phone%></li>
 
       <% unless favorite.notes == nil %>
