@@ -11,6 +11,9 @@
         <li><%= "Notes: " + favorite.notes %>
       <% end %>
 
+      <% if current_user %>
+        <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %>
+      <% end %>
     <% end %><br>
   </ul>
 </div>

@@ -34,7 +34,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.where(user_id: params[:user_id], provider_id: params[:id])
     @user = User.find(params[:user_id])
     @user.favorites.delete(@favorite)
-    redirect_to root_path
+    redirect_to user_favorites_path
   end
     # @provider = Provider.where(yelp_id: (params[:provider_id]))
     # current_user.favorites << @provider
