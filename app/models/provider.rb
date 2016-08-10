@@ -17,7 +17,7 @@ class Provider < ActiveRecord::Base
   # end
 
   def yelp_info
-    yelp_info ||= Yelp.client.business(id).business
+    @yelp_info ||= Yelp.client.business(id).business
   end
 
   def name

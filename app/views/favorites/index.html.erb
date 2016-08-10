@@ -2,9 +2,10 @@
   <h2><%= current_user.name %>'s Saved Providers</h2>
   <ul>
     <% @favorites.each do |favorite| %>
-    <li><%= favorite.get_provider_info.name%></li>
-    <li><%= favorite.get_provider_info.location.display_address%></li>
-    <li><%= favorite.get_provider_info.phone%></li>
+    <%= image_tag favorite.image_url %>
+    <li><%= favorite.name%></li>
+    <li><%= favorite.street%>, <%= favorite.street%></li>
+    <li><%= favorite.display_phone%></li>
 
       <% unless favorite.notes == nil %>
         <li><%= "Notes: " + favorite.notes %>
