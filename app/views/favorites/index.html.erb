@@ -2,7 +2,7 @@
   <h2><%= current_user.name %>'s Saved Providers</h2>
   <ul>
     <% @favorites.each do |favorite| %>
-    <%= image_tag favorite.image_url %>
+    <%= image_tag favorite.image_url %><br>
     <li><%= favorite.name%></li>
     <li><%= favorite.street%>, <%= favorite.street%></li>
     <li><%= favorite.display_phone%></li>
@@ -13,7 +13,7 @@
 
       <% if current_user %>
         <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %>
-      <% end %>
+      <% end %><br>
     <% end %><br>
   </ul>
 </div>

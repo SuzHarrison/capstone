@@ -17,6 +17,13 @@
       <%= "Category: " + @result.category %><br>
       <%= link_to "See More Reviews on Yelp", @result.bus_url %></p>
 
+      <% unless @result.bed_count == nil %>
+      <li><%= "Available Bed Count: " + @result.bed_count.to_s%></li>
+      <% end %>
+
+      <% unless @result.average_cost == nil %>
+      <li><%= "Average Monthly Cost: $" + @result.average_cost.to_s%></li>
+      <% end %>
 
       <% if current_user %>
         <%= link_to '<i class="fi-pencil"></i> See my favorites'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %><br>
