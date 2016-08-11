@@ -1,6 +1,8 @@
-<div class="landing_body"><h1>Welcome!</h1>
-
-   <h3>Look for a provider in your area</h3>
+<div class="landing_body">
+  <% unless current_user %>
+    <h1>Welcome!</h1>
+  <% end %>
+   <h3>Search for a provider in your area</h3>
 
    Enter your search term:
    <%= form_tag search_term_path, method: "post", class: "navbar-form navbar-left" do  %>

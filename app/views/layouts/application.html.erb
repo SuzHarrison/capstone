@@ -7,6 +7,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<header>
+<% if current_user %>
   <nav class="navbar navbar-default">
      <div class="container-fluid">
          <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,8 +26,7 @@
           <small>Helping families find the right senior care</small></h1>
       </div>
 
-      <nav class="navbar navbar-default">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-mid">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "My Account", user_favorites_path(current_user.id) if current_user %></li>
         </ul>
@@ -45,13 +46,19 @@
       </div>
     </div><!-- /.container-fluid -->
   </nav>
+    <% if flash[:notice] -%>
+    <div class="alert alert-warning" role="alert">
+      <p class='notice'><%=h flash[:notice] %></p>
+    </div>
+    <% end %>
+  <% else %>
 
-  <% if flash[:notice] -%>
-  <div class="alert alert-warning" role="alert">
-    <p class='notice'><%=h flash[:notice] %></p>
-  </div>
+  <%= image_tag("LIGHTHOUSE-BEACON.png", class: "background_image") %>
+
+  <li><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
+
   <% end %>
-
+</header>
 <body>
 
 <%= yield %>

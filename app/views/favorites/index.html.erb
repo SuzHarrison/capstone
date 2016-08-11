@@ -1,22 +1,25 @@
 <div>
-  <h2><%= current_user.name %>'s Saved Providers</h2>
+  <h3><%= current_user.name %>'s Saved Providers</h3>
+  <% @favorites.each do |favorite| %>
+  <%= image_tag favorite.image_url %><br>
   <ul>
-    <% @favorites.each do |favorite| %>
-    <%= image_tag favorite.image_url %><br>
-    <li><%= favorite.name%></li>
+    <h3><li><%= favorite.name%></li></h3>
     <li><%= favorite.street%>, <%= favorite.city%></li>
     <li><%= favorite.display_phone%></li>
-    <%binding.pry%>
-      <li><% if favorite.notes %>
-        <li><%= "Notes: " + favorite.notes %>
-      <% end %></li>
+    <li><%= "Average Monthly Cost: $" + favorite.provider.average_cost.to_s%></li>
+    <li><%= "Available In-home attendants or In-facility Bed Count: " + favorite.provider.bed_count.to_s%></li>
+  </ul>
+
+      <% if favorite.notes %>
+        <p><%= simple_format("Notes: " + favorite.notes) %></p>
+      <% end %><br>
 
       <%= form_for(favorite, url: user_favorite_path(favorite.user_id, favorite.id), html: {method: "patch"}) do |f| %>
         <fieldset>
-          <h2>Enter a Note:</h2>
+          <h4>Enter a Note:</h4>
           <div class="form-group">
           <!-- <%= f.label :name %> -->
-          <%= f.text_field :notes, class: "form-control", label: false, placeholder: "enter any notes", :required => true %>
+          <%= f.text_area :notes, size: "40x5", label: false, placeholder: "enter any notes", :required => true %>
           </div>
           <%= f.hidden_field :user_id, :value => session[:user_id] %>
         </fieldset>
@@ -24,11 +27,7 @@
       </div>
       <% end %>
 
-
       <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %><br>
 
-
-
     <% end %><br>
-  </ul>
 </div>

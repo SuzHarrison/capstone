@@ -18,7 +18,7 @@
       <%= link_to "See More Reviews on Yelp", @result.bus_url %></p>
 
       <% unless @result.bed_count == nil %>
-      <li><%= "Available Bed Count: " + @result.bed_count.to_s%></li>
+      <li><%= "Available In-home attendants or In-facility Bed Count: " + @result.bed_count.to_s%></li>
       <% end %>
 
       <% unless @result.average_cost == nil %>

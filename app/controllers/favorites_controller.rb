@@ -32,7 +32,6 @@ class FavoritesController < ApplicationController
 
   def update
     @favorite = Favorite.find(params[:id])
-    binding.pry
     if @favorite.update(notes: params[:favorite][:notes])
       redirect_to user_favorites_path, notice: 'Note was successfully updated.'
     else
