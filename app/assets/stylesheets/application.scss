@@ -14,14 +14,20 @@
  *= require_self
  */
 
-  img.background_image {
-  background: no-repeat top center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  opacity:0.3;
-  background-size: 100%;
-  height: 100%;
+ html {
+   margin: 10 rem;
+   background: url(../images/LIGHTHOUSE-BEACON.png) no-repeat center center fixed;
+ }
+
+
+ .brand_background {
+   background-image: url(image-path('LIGHTHOUSE-BEACON.png'));
+   background: no-repeat top center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: 100%;
+   height: 100%;
  }
 
  .picprofile {
@@ -47,10 +53,7 @@
    text-align: center;
  }
 
- // body {
- //   z-index:11;
- //   position: absolute;
- // }
+
 
 
 
