@@ -3,10 +3,10 @@
   <% @favorites.each do |favorite| %>
     <div class="panel panel-default">
       <div class="panel-heading">
-      <%= favorite.name%>
+      <h5><strong><%= favorite.name %></strong></h5>
       </div>
-      <%= image_tag favorite.image_url %><br>
       <div class="panel-body">
+      <%= image_tag favorite.image_url %><br>
         <ul>
           <li><%= favorite.street%>, <%= favorite.city%></li>
           <li><%= favorite.display_phone%></li>

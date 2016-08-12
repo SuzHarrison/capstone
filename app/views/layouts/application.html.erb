@@ -22,21 +22,22 @@
         <%= image_tag("LIGHTHOUSE-BEACON.png", class: "img-responsive", style: "height: 11rem; width: 11rem; margin: 13px")%>
        </div>
       <div>
-        <h1><a href="/">Beacon Senior Resources</a><br>
+        <h1><a href="/">Beacon Senior Resources</a>
           <small>Helping families find the right senior care</small></h1>
       </div>
 
         <ul class="nav navbar-nav navbar-mid">
           <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "My Account", user_favorites_path(current_user.id) if current_user %></li>
+          <li><%= link_to "Learn more about Senior Care", root_path %></li>
+          <li><%= link_to "My Saved Providers", user_favorites_path(current_user.id) if current_user %></li>
         </ul>
 
       <div class ="google_login">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li class="name"><strong><%= current_user.name %></strong>!<br>
+            <li class="name"><%= current_user.name %><br>
             <%= image_tag current_user.image, class: "picprofile" %><br>
-            <%= link_to "Sign out", logout_path, id: "sign_out" %><br>
+            <%= link_to "Sign out", logout_path, id: "sign_out" %></li>
           <% end %>
 
           <% unless current_user %>
@@ -48,26 +49,40 @@
   </nav>
     <% if flash[:notice] -%>
     <div class="alert alert-warning" role="alert">
-      <p class='notice'><%=h flash[:notice] %></p>
+      <p class='notice'><%= flash[:notice] %></p>
     </div>
     <% end %>
   <% else %>
+  <div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand">Beacon Senior Resources</h3>
 
-  <li><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
+          <ul class="nav masthead-nav">
+            <li class="active">
+              <!-- Validation -->
+              <li><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+
 
   <% end %>
 </header>
-<body >
 
-<div class="brand_background">
-
-<%= yield %>
-
-</div>
-
+<body>
+    <%= yield %>
 </body>
 
-<!-- <div class="navbar-static-bottom" id="footer">
-  <p><span class="glyphicon glyphicon-copyright-mark"></span>Beacon Senior Resources, LLC</p>
+<!-- <div class="mastfoot">
+  <div class="inner">
+    <p>© 2016 Beacon Senior Resources ~</p>
+  </div>
 </div> -->
 </html>
