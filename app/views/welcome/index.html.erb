@@ -4,24 +4,26 @@
   <% end %>
    <h3>Search for a provider in your area</h3>
 
-   Enter your search term:
-   <%= form_tag search_term_path, method: "post", class: "navbar-form navbar-left" do  %>
-     <%= text_field_tag :city, nil, class: 'form-control', placeholder: 'city' %><br>
+   <h4 class="search">Enter your search term:</h4>
+       <%= form_tag search_term_path, method: "post", class: "navbar-form navbar-left" do  %>
+         <%= text_field_tag :city, nil, class: 'form-control', placeholder: 'city' %><br>
 
-     <%= radio_button_tag 'category', 'Home Health Care', false, class: "custom-control-input"%>
-     <%= label_tag(:category, "Home Health Care") %><br>
+         <%= radio_button_tag 'category', 'Home Health Care', false, class: "custom-control-input"%>
+         <%= label_tag(:category, "Home Health Care") %><br>
 
-     <%= radio_button_tag 'category', "Assisted Living Facilities", false, class: "custom-control-input"%>
-     <%= label_tag(:category, "Assisted Living Facilities") %><br>
+         <%= radio_button_tag 'category', "Assisted Living Facilities", false, class: "custom-control-input"%>
+         <%= label_tag(:category, "Assisted Living Facilities") %><br>
 
-     <%= radio_button_tag 'category', "Retirement Homes", false, class: "custom-control-input"%>
-     <%= label_tag(:category, "Retirement Homes") %><br>
+         <%= radio_button_tag 'category', "Retirement Homes", false, class: "custom-control-input"%>
+         <%= label_tag(:category, "Retirement Homes") %><br>
 
 
-     <span class="input-group-btn">
-       <%= submit_tag "Search", class: 'btn btn-default'%>
-     </span>
-   <% end %>
+         <span class="input-group-btn">
+           <%= submit_tag "Search", class: 'btn btn-default'%>
+         </span>
+       <% end %>
+      </div>
+    </div>
 </div>
 
 <% if @results == nil %>

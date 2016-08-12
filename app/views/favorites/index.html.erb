@@ -1,6 +1,68 @@
+<div class="container">
+  <div class="row">
+		<div class="well">
+      <h2 class="text-center"><%= current_user.name %>'s Saved Providers</h2>
+        <div class="list-group">
+          <% @favorites.each do |favorite| %>
+          <a href="#" class="list-group-item">
+
+            <div class="media col-md-2">
+              <figure class="pull-left">
+                  <%= image_tag favorite.image_url, class:"media-object img-rounded img-responsive" %>
+                  <%= image_tag favorite.rating_img_url %>
+              </figure>
+            </div>
+
+            <div class="col-md-5">
+              <h4 class="list-group-item-heading"><strong><%= favorite.name %></strong></h4>
+                <p class="list-group-item-text">
+                  <%= favorite.street%>, <%= favorite.city%><br>
+                  <%= favorite.display_phone%><br>
+                  <%= "Average Monthly Cost: $" + favorite.provider.average_cost.to_s%><br>
+                  <%= "Available In-home attendants or In-facility Bed Count: " + favorite.provider.bed_count.to_s%><br>
+                </p>
+            </div>
+
+            <div class="col-md-3 text-center">
+
+                <%= form_for(favorite, url: user_favorite_path(favorite.user_id, favorite.id), html: {method: "patch"}) do |f| %>
+                  <fieldset>
+                    <h4>Add a note to log:</h4>
+                    <div class="form-group">
+                    <!-- <%= f.label :name %> -->
+                    <%= f.text_area :notes, size: "30x5", label: false, placeholder: "enter any notes", :required => true %>
+                    </div>
+                    <%= f.hidden_field :user_id, :value => session[:user_id] %>
+                  </fieldset>
+                  <div class="submit"><%= f.submit class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+            </div>
+
+            <div class="col-md-2 text-center">
+              <%= link_to 'remove', user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button-info" %>
+            </div>
+
+          </a>
+          <% end %>
+        </div>
+     </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 <div>
   <h3><%= current_user.name %>'s Saved Providers</h3>
-  <% @favorites.each do |favorite| %>
+<% @favorites.each do |favorite| %>
     <div class="panel panel-default">
       <div class="panel-heading">
       <h5><strong><%= favorite.name %></strong></h5>
@@ -14,13 +76,13 @@
           <li><%= "Available In-home attendants or In-facility Bed Count: " + favorite.provider.bed_count.to_s%></li>
         </ul>
 
-        <% if favorite.notes %>
+        <!-- <% if favorite.notes %>
           <p><%= simple_format("Notes: " + favorite.notes) %></p>
-        <% end %><br>
+        <% end %><br> -->
 
         <%= form_for(favorite, url: user_favorite_path(favorite.user_id, favorite.id), html: {method: "patch"}) do |f| %>
           <fieldset>
-            <h4>Enter a Note:</h4>
+            <h4>Add a note to log:</h4>
             <div class="form-group">
             <!-- <%= f.label :name %> -->
             <%= f.text_area :notes, size: "40x5", label: false, placeholder: "enter any notes", :required => true %>

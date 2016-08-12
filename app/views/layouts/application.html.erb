@@ -8,6 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <header>
+
 <% if current_user %>
   <nav class="navbar navbar-default">
      <div class="container-fluid">
@@ -22,22 +23,22 @@
         <%= image_tag("LIGHTHOUSE-BEACON.png", class: "img-responsive", style: "height: 11rem; width: 11rem; margin: 13px")%>
        </div>
       <div>
-        <h1><a href="/">Beacon Senior Resources</a>
+        <h1 class="masthead-brand"><a href="/">Beacon Senior Resources</a>
           <small>Helping families find the right senior care</small></h1>
       </div>
 
         <ul class="nav navbar-nav navbar-mid">
           <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Learn more about Senior Care", root_path %></li>
+          <li><%= link_to "Learn more about Senior Care", learn_path %></li>
           <li><%= link_to "My Saved Providers", user_favorites_path(current_user.id) if current_user %></li>
         </ul>
 
       <div class ="google_login">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li class="name"><%= current_user.name %><br>
-            <%= image_tag current_user.image, class: "picprofile" %><br>
-            <%= link_to "Sign out", logout_path, id: "sign_out" %></li>
+            <p class="name"><%= current_user.name %></p>
+            <%= image_tag current_user.image, class: "picprofile" %>
+            <p class="name"><%= link_to "Sign out", logout_path, id: "sign_out" %></p>
           <% end %>
 
           <% unless current_user %>

@@ -26,4 +26,8 @@ class WelcomeController < ApplicationController
     @results = Yelp.client.search(params[:city], all_data)
     render :index
   end
+
+  def learn
+    render :learn
+  end
 end
