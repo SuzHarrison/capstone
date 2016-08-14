@@ -1,29 +1,36 @@
 <div class="landing_body">
   <% unless current_user %>
-    <h1>Welcome!</h1>
+    <h2 style="text-align: center; color: black;">Welcome!</h2>
   <% end %>
-   <h3>Search for a provider in your area</h3>
+  <div style="width: 50%; margin: 0 auto;">
+  <h4 style="text-align: center; color: black;">Search for a provider in your area</h4>
 
-   <h4 class="search">Enter your search term:</h4>
-       <%= form_tag search_term_path, method: "post", class: "navbar-form navbar-left" do  %>
-         <%= text_field_tag :city, nil, class: 'form-control', placeholder: 'city' %><br>
+    <div class="row">
+        <div class="col s12 m10 offset-m1">
+          <div class="card-panel indigo lighten-3">
+            <span class="white-text">
+              <h4 class="search">Enter your search term:</h4>
+                <%= form_tag search_term_path, method: "post", class: "" do  %>
+                  <%= text_field_tag :city, nil, class: 'form-control', placeholder: 'city' %><br>
 
-         <%= radio_button_tag 'category', 'Home Health Care', false, class: "custom-control-input"%>
-         <%= label_tag(:category, "Home Health Care") %><br>
+                  <p><%= radio_button_tag 'category', 'Home Health Care', false, class: ""%>
+                  <%= label_tag("category_Home_Health_Care", "Home Health Care", class: "white-text") %></p>
 
-         <%= radio_button_tag 'category', "Assisted Living Facilities", false, class: "custom-control-input"%>
-         <%= label_tag(:category, "Assisted Living Facilities") %><br>
+                  <p><%= radio_button_tag 'category', "Assisted Living Facilities", false, class: ""%>
+                  <%= label_tag("category_Assisted_Living_Facilities", "Assisted Living Facilities", class: "white-text") %></p>
 
-         <%= radio_button_tag 'category', "Retirement Homes", false, class: "custom-control-input"%>
-         <%= label_tag(:category, "Retirement Homes") %><br>
+                  <p><%= radio_button_tag 'category', "Retirement Homes", false, class: ""%>
+                  <%= label_tag("category_Retirement_Homes", "Retirement Homes", class: "white-text") %></p>
 
-
-         <span class="input-group-btn">
-           <%= submit_tag "Search", class: 'btn btn-default'%>
-         </span>
-       <% end %>
+                  <span class="input-group-btn">
+                    <%= submit_tag "Search", class: 'btn btn-default'%>
+                  </span>
+                <% end %>
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
+  </div>
 </div>
 
 <% if @results == nil %>
