@@ -2,6 +2,8 @@ class Favorite < ActiveRecord::Base
   belongs_to :user
   belongs_to :provider
 
+  validates :name, presence: true
+
   def yelp_info
     @yelp_info ||= Yelp.client.business(provider_id).business
   end
