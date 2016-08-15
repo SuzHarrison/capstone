@@ -23,8 +23,13 @@ class WelcomeController < ApplicationController
      category_filter: converted_search_query
     }
 
-    @results = Yelp.client.search(params[:city], all_data)
-    render :index
+    if all_data && params[:city].present?
+      @results = Yelp.client.search(params[:city], all_data)
+      render :index
+    else
+      flash[:notice] = "sorry - please enter valid data"
+      redirect_to root_path
+    end
   end
 
   def learn

@@ -10,14 +10,12 @@ class ProviderTest < ActiveSupport::TestCase
       refute_nil Provider.new
     end
 
-    it "can find a provider" do
-      result = Provider.where(yelp_id: 'a-helping-hand-homecare-seattle-2')
-      # puts "this is the thing, #{result}"
-      #
-      # puts "The name is #{result.name}"
-      # puts "The something is #{result.bed_count}"
-      # # assert_equal result.name, "A Helping Hand Homecare"
-      # assert_equal result.name, "A Helping Hand Homecare"
+    it "it can find a provider" do
+      return_provider = Provider.find_by(yelp_id: 'a-helping-hand-homecare-seattle-2')
+
+      assert_instance_of(Provider, return_provider)
+      assert_equal return_provider.name, "A Helping Hand Homecare"
+      assert_equal return_provider.bed_count, 4
     end
   end
 end

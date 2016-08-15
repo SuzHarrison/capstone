@@ -5,8 +5,6 @@
 # below each fixture, per the syntax in the comments below
 #
 first_provider:
- name: "A Helping Hand Homecare"
- city: "Seattle"
- phone: "2066867440"
- bed_count: 4
- average_cost: 2400
+  yelp_id: "a-helping-hand-homecare-seattle-2"
+  bed_count: 4
+  average_cost: 2400

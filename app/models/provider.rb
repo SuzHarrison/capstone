@@ -3,7 +3,7 @@ class Provider < ActiveRecord::Base
   has_many :users, through: :user_favorites
   has_many :comparisons, through: :provider_comparisons
 
-  validates :name, presence: true
+  # validates :name, presence: true
 
   self.primary_key = "yelp_id"
   # attr_reader :name, :phone, :url, :image_url, :rating, :rating_img_url, :location
