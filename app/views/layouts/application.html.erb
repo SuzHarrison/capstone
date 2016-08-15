@@ -41,6 +41,14 @@
     </div>
   </nav>
 
+  <% if !flash.empty? %>
+   <div class="alert alert-info">
+     <% flash.each do |key, msg| %>
+       <%= content_tag :div, msg, :id => key %>
+     <% end %>
+   </div>
+   
+ <% end %>
   <!--put in the error flash info  -->
     <%= yield %>
 </body>
