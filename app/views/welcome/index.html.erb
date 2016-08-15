@@ -46,7 +46,8 @@
         <%= image_tag business.image_url %>
         <%= image_tag business.rating_img_url %>
         <span class="black-text">
-        <%= "Category: " + business.categories[0][0] %>
+        <%= "Category: " %><br>
+        <%= business.categories[0][0] %>
         </span>
       </div>
       </div>
@@ -56,7 +57,8 @@
           <p><% business.location.display_address.each do |line| %>
            <%= line %><br>
           <% end %><br>
-          <%= business.phone %><br>
+            <%= "tel: (#{business.display_phone[3..5]}) #{business.display_phone[7..-1]}" %>
+            <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
           </p>
         </span>
         </div>
