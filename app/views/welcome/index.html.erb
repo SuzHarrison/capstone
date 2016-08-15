@@ -37,21 +37,61 @@
 <% elsif @results.businesses.length == 0 %>
   <h3> Sorry, there are no results for that search. </h3>
 <% else %>
+  <% @results.businesses.each do |business|%>
+  <div class="col s12 m3">
+    <h4 class="header"><%= business.name %></h4>
+      <div class="card horizontal">
+      <div class="card-image">
+        <div style="padding: 1rem;">
+        <%= image_tag business.image_url %>
+        <%= image_tag business.rating_img_url %>
+        <span class="black-text">
+        <%= "Category: " + business.categories[0][0] %>
+        </span>
+      </div>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <span class="black-text">
+          <p><% business.location.display_address.each do |line| %>
+           <%= line %><br>
+          <% end %><br>
+          <%= business.phone %><br>
+          </p>
+        </span>
+        </div>
+        <div class="card-action">
+          <%= link_to "see reviews", business.url %>
+          <%= link_to "show more details", provider_path(business.id), method: :get %>
+        </div>
+      </div>
+      </div>
+  </div>
+  <% end %>
+<% end %>
+
+<!--
+
+<% if @results == nil %>
+<% elsif @results.businesses.length == 0 %>
+  <h3> Sorry, there are no results for that search. </h3>
+<% else %>
 <div>
   <ul>
     <% @results.businesses.each do |business|%>
      <li><%= business.name %><br>
      <li><%= business.id %><br>
-     <%= image_tag business.rating_img_url %><br>
-     <%= "Category: " + business.categories[0][0] %><br>
-     <% business.location.display_address.each do |line| %>
-      <%= line %><br>
-     <% end %><br>
-     <%= business.phone %><br>
-     <%= image_tag business.image_url %>
+       <%= image_tag business.rating_img_url %><br>
+       <%= "Category: " + business.categories[0][0] %><br>
+       <% business.location.display_address.each do |line| %>
+       <%= line %><br>
+       <% end %><br>
+       <%= business.phone %><br>
+       <%= image_tag business.image_url %>
+
      <%= link_to "see reviews", business.url %></p>
      <%= button_to "show more details", provider_path(business.id), method: :get %>
     <% end %>
   </ul>
 </div>
-<% end %>
+<% end %> -->
