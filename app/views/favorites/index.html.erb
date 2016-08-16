@@ -1,16 +1,17 @@
 <div>
-  <h3><%= current_user.name %>'s Saved Providers</h3>
+  <span class="black-text"><h3><%= current_user.name %>'s Saved Providers</h3></span>
 <% @favorites.each do |favorite| %>
-<div class="container">
-  <h4 class="header"><strong><%= favorite.name %></strong></h4>
-    <div class="card horizontal">
-    <div class="card-image">
-      <div style="padding: 1rem;">
-      <%= image_tag favorite.image_url %>
-      <%= image_tag favorite.rating_img_url %>
-      <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %><br>
-    </div>
-    </div>
+  <div class="container">
+    <h4 class="header"><strong><%= favorite.name %></strong></h4>
+      <div class="card horizontal">
+      <div class="card-image">
+        <div style="padding: 1rem;">
+        <%= image_tag favorite.image_url %>
+        <%= image_tag favorite.rating_img_url %>
+        <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %><br>
+      </div>
+      </div>
+
       <span class="black-text">
       <div class="col s3 m3">
         <ul>
@@ -20,7 +21,8 @@
           <li><%= "Available In-home attendants or In-facility Bed Count: " + favorite.provider.bed_count.to_s%></li>
         </ul>
       </div>
-    </span>
+      </span>
+
       <div class="notes col s3 m3">
 
         <% if favorite.notes %>
@@ -36,9 +38,9 @@
               </div>
               <%= f.hidden_field :user_id, :value => session[:user_id] %>
             </fieldset>
-          </div>
           <div class="submit"><%= f.submit class: "button info" %>
           </div>
+        </div>
         <% end %>
       </div>
     </div>
