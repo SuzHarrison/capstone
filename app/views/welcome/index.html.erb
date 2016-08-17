@@ -37,8 +37,10 @@
 <% elsif @results.businesses.length == 0 %>
   <h3> Sorry, there are no results for that search. </h3>
 <% else %>
+<div class="row">
   <% @results.businesses.each do |business|%>
-  <div class="col s12 m7">
+  <!-- <div class="container"> -->
+  <div class="col s5">
     <h4 class="header"><%= business.name %></h4>
       <div class="card horizontal">
       <div class="card-image">
@@ -64,12 +66,24 @@
         </div>
         <div class="card-action">
           <%= link_to "see reviews", business.url %>
+            <div class="divider"></div>
           <%= link_to "show more details", provider_path(business.id), method: :get %>
-        </div><br>
+            <div class="divider"></div>
+          <% if current_user && (!current_user.favorited?(business)) %>
+            <%= form_tag user_favorites_path(current_user.id), method: :post do %>
+              <%= hidden_field_tag 'provider_yelp_id', business.id %>
+              <%= link_to '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
+            <% end %>
+            <div class="divider"></div>
+          <% else %>
+            <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, business.id), method: :delete, class: "button info" %>
+          <% end %></div><br>
       </div>
       </div>
   </div>
+  <!-- </div> -->
   <% end %>
+</div>
 <% end %>
 
 <!--

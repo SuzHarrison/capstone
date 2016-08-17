@@ -1,6 +1,6 @@
 <div>
   <span class="black-text"><h3><%= current_user.name %>'s Saved Providers</h3></span>
-<% @favorites.each do |favorite| %>
+<% current_user.favorites.each do |favorite| %>
   <div class="container">
     <h4 class="header"><strong><%= favorite.name %></strong></h4>
       <div class="card horizontal">
@@ -17,8 +17,9 @@
       <!-- <div class="col s5 m5"> -->
         <ul>
           <span class="black-text">
-          <li><%= favorite.street%>, <%= favorite.city%></li>
-          <li><%= favorite.display_phone%></li>
+          <li><%= favorite.street%></li>
+          <li><%= favorite.city%>, <%= favorite.state_code %> <%=  favorite.postal_code%></li>
+          <li><%= favorite.display_phone%></li><br>
           <li><%= "Average Monthly Cost: $" + favorite.provider.average_cost.to_s%></li>
           <% if favorite.category == "Home Health Care" %>
             <li><%= "Available In-home attendants: " + favorite.provider.bed_count.to_s%></li>
@@ -52,6 +53,6 @@
 
         <% end %>
       </div>
-    </div>
+    </div><br>
   <% end %>
-</div><br>
+</div>
