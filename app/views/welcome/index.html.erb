@@ -69,15 +69,16 @@
             <div class="divider"></div>
           <%= link_to "show more details", provider_path(business.id), method: :get %>
             <div class="divider"></div>
-          <% if current_user && (!current_user.favorited?(business)) %>
+          <!-- <% if current_user && (!current_user.favorited?(business)) %>
             <%= form_tag user_favorites_path(current_user.id), method: :post do %>
-              <%= hidden_field_tag 'provider_yelp_id', business.id %>
+              <%= hidden_field_tag 'business.id', business.id %>
               <%= link_to '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
-            <% end %>
-            <div class="divider"></div>
-          <% else %>
+            <% end %> -->
+            <!-- <div class="divider"></div> -->
+          <!-- <% else %>
             <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, business.id), method: :delete, class: "button info" %>
-          <% end %></div><br>
+          <% end %> -->
+        </div><br>
       </div>
       </div>
   </div>
