@@ -1,5 +1,7 @@
 <div>
-  <span class="black-text"><h3><%= current_user.name %>'s Saved Providers</h3></span>
+  <span class="black-text">
+    <center><h3><%= current_user.name %>'s Saved Providers</h3></center>
+    </span>
 <% current_user.favorites.each do |favorite| %>
   <div class="container">
     <h4 class="header"><strong><%= favorite.name %></strong></h4>
@@ -36,6 +38,7 @@
           <p><%= simple_format("Notes: " + favorite.notes) %></p>
         <% end %><br>
 
+        <section class="notesshow">
         <%= form_for(favorite, url: user_favorite_path(favorite.user_id, favorite.id), html: {method: "patch"}) do |f| %>
           <fieldset>
             <h8><i class="material-icons">mode_edit</i>Add a note to log:</h8>
@@ -46,12 +49,15 @@
             <%= f.hidden_field :user_id, :value => session[:user_id] %>
           </fieldset>
         </span>
-          </div>
           <button class="waves-effect waves-teal btn-flat"><%= f.submit class: "button info" %>
             <i class="material-icons right">send</i>
           </button>
-
         <% end %>
+      </section>
+      <button class="button-hide">Hide</button>
+      <button class="button-show">Add/Edit notes</button>
+        </div>
+
       </div>
     </div><br>
   <% end %>

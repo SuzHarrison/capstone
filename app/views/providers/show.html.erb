@@ -1,41 +1,45 @@
-<% if @result %>
-  <div>
-    <ul>
-      <h2><small><%= @result.name %><br></small></h2>
-      <%= image_tag @result.image_url %><br>
-      <%= image_tag @result.rating_img_url %><br>
-      <%= @result.street %><br>
-      <%= @result.city %>, <%= @result.state_code %> <%= @result.postal_code %><br>
+<center><div class="container"></center>
+  <% if @result %>
+    <div class="row">
+        <center><div class="col s12 m6 offset-m3">
+          <div class="card indigo lighten-3">
+            <div class="card-content white-text">
+              <span class="card-title"><%= @result.name %></span>
+              <ul>
+                <%= image_tag @result.image_url %><br>
+                <%= image_tag @result.rating_img_url %><br>
+                <%= @result.street %><br>
+                <%= @result.city %>, <%= @result.state_code %> <%= @result.postal_code %><br>
+                <%= @result.display_phone %><br>
+                <%= "Category: " + @result.category %><br>
 
+                <% unless @result.bed_count == nil %>
+                <li><%= "Available In-home attendants or In-facility Bed Count: " + @result.bed_count.to_s%></li>
+                <% end %>
 
-      <% unless @result.display_phone.nil? %>
-        <%= link_to "tel:#{@result.display_phone}" do%>
-        <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
-        <% end %>
-      <% end %>
-      <%= @result.display_phone %><br>
-      <%= "Category: " + @result.category %><br>
-      <%= link_to "See More Reviews on Yelp", @result.bus_url %></p>
+                <% unless @result.average_cost == nil %>
+                <li><%= "Average Monthly Cost: $" + @result.average_cost.to_s%></li>
+                <% end %>
 
-      <% unless @result.bed_count == nil %>
-      <li><%= "Available In-home attendants or In-facility Bed Count: " + @result.bed_count.to_s%></li>
-      <% end %>
-
-      <% unless @result.average_cost == nil %>
-      <li><%= "Average Monthly Cost: $" + @result.average_cost.to_s%></li>
-      <% end %>
-
-      <% if current_user %>
-        <%= link_to '<i class="fi-pencil"></i> See my favorites'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %><br>
-      <% end %>
-      <% if current_user && (!current_user.favorited?(@result)) %>
-        <%= form_tag user_favorites_path(current_user.id), method: :post do %>
-          <%= hidden_field_tag 'provider_yelp_id', @result.id %>
-          <%= button_tag '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
-        <% end %>
-      <% else %>
-        <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, @result.id), method: :delete, class: "button info" %>
-      <% end %>
-    </ul>
-  </div>
+                <div class="card-action">
+                <% if current_user %>
+                  <%= link_to '<i class="fi-pencil"></i> See my favorites'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %><br>
+                <% end %>
+                <div class="divider"></div>
+                <% if current_user && (!current_user.favorited?(@result)) %>
+                  <%= form_tag user_favorites_path(current_user.id), method: :post do %>
+                    <%= hidden_field_tag 'provider_yelp_id', @result.id %>
+                    <%= button_tag '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
+                  <% end %>
+                <% else %>
+                  <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, @result.id), method: :delete, class: "button info" %>
+                <% end %>
+                <div class="divider"></div>
+                <%= link_to "See More Reviews on Yelp", @result.bus_url %></p>
+                </div>
+              </ul>
+          </div>
+        </div>
+    </div>
+  </div></center>
 <% end %>
