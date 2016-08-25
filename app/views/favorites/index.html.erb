@@ -1,64 +1,68 @@
-<div>
-  <span class="black-text">
-    <center><h3><%= current_user.name %>'s Saved Providers</h3></center>
+
+  <div>
+    <span class="black-text">
+      <center><h3><%= current_user.name %>'s Saved Providers</h3></center>
     </span>
-<% current_user.favorites.each do |favorite| %>
-  <div class="container">
-    <h4 class="header"><strong><%= favorite.name %></strong></h4>
-      <div class="card horizontal">
-      <div class="card-image">
-        <div style="padding-left: 1rem; padding-top: 1rem;">
-        <%= image_tag favorite.image_url %>
-        <%= image_tag favorite.rating_img_url %>
-        <div class="card-action">
-        <%= link_to 'Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %><br>
-        </div>
-      </div>
-      </div>
+<!-- 
+    <div id="reacttest">This is react playground</div> -->
 
-      <!-- <div class="col s5 m5"> -->
-        <ul>
+    <% current_user.favorites.each do |favorite| %>
+    <div class="container">
+      <h4 class="header"><strong><%= favorite.name %></strong></h4>
+        <div class="card horizontal">
+        <div class="card-image">
+          <div style="padding-left: 1rem; padding-top: 1rem;">
+          <%= image_tag favorite.image_url %>
+          <%= image_tag favorite.rating_img_url %>
+          <div class="card-action">
+          <%= link_to 'Delete from favorites'.html_safe, user_favorite_path(current_user.id, favorite.provider_id), method: :delete, class: "button info" %><br>
+          </div>
+        </div>
+        </div>
+
+        <!-- <div class="col s5 m5"> -->
+          <ul>
+            <span class="black-text">
+            <li><%= favorite.street%></li>
+            <li><%= favorite.city%>, <%= favorite.state_code %> <%=  favorite.postal_code%></li>
+            <li><%= favorite.display_phone%></li><br>
+            <li><%= "Average Monthly Cost: $" + favorite.provider.average_cost.to_s%></li>
+            <% if favorite.category == "Home Health Care" %>
+              <li><%= "Available In-home attendants: " + favorite.provider.bed_count.to_s%></li>
+            <% else %>
+              <li><%= "In-facility Bed Count: " + favorite.provider.bed_count.to_s%></li>
+            <% end %>
+          </span>
+          </ul>
+        <!-- </div> -->
+
           <span class="black-text">
-          <li><%= favorite.street%></li>
-          <li><%= favorite.city%>, <%= favorite.state_code %> <%=  favorite.postal_code%></li>
-          <li><%= favorite.display_phone%></li><br>
-          <li><%= "Average Monthly Cost: $" + favorite.provider.average_cost.to_s%></li>
-          <% if favorite.category == "Home Health Care" %>
-            <li><%= "Available In-home attendants: " + favorite.provider.bed_count.to_s%></li>
-          <% else %>
-            <li><%= "In-facility Bed Count: " + favorite.provider.bed_count.to_s%></li>
-          <% end %>
-        </span>
-        </ul>
-      <!-- </div> -->
+            <div class="notes">
+            <% if favorite.notes %>
+              <p><%= simple_format("Notes: " + favorite.notes) %></p>
+            <% end %><br>
 
-        <span class="black-text">
-          <div class="notes">
-        <% if favorite.notes %>
-          <p><%= simple_format("Notes: " + favorite.notes) %></p>
-        <% end %><br>
+            <section class="notesshow">
+            <%= form_for(favorite, url: user_favorite_path(favorite.user_id, favorite.id), html: {method: "patch"}) do |f| %>
+              <fieldset>
+                <h8><i class="material-icons">mode_edit</i>Add a note to log:</h8>
+                <div class="form-group">
+                <!-- <%= f.label :name %> -->
+                <%= f.text_area :notes, size: "40x5", label: false, placeholder: "enter any notes", :required => true %>
+                </div>
+                <%= f.hidden_field :user_id, :value => session[:user_id] %>
+              </fieldset>
+            </span>
+              <button class="waves-effect waves-teal btn-flat"><%= f.submit class: "button info" %>
+                <i class="material-icons right">send</i>
+              </button>
+            <% end %>
+          </section>
+          <button class="button-hide">Hide</button>
+          <button class="button-show">Add/Edit notes</button>
+          </div>
 
-        <section class="notesshow">
-        <%= form_for(favorite, url: user_favorite_path(favorite.user_id, favorite.id), html: {method: "patch"}) do |f| %>
-          <fieldset>
-            <h8><i class="material-icons">mode_edit</i>Add a note to log:</h8>
-            <div class="form-group">
-            <!-- <%= f.label :name %> -->
-            <%= f.text_area :notes, size: "40x5", label: false, placeholder: "enter any notes", :required => true %>
-            </div>
-            <%= f.hidden_field :user_id, :value => session[:user_id] %>
-          </fieldset>
-        </span>
-          <button class="waves-effect waves-teal btn-flat"><%= f.submit class: "button info" %>
-            <i class="material-icons right">send</i>
-          </button>
-        <% end %>
-      </section>
-      <button class="button-hide">Hide</button>
-      <button class="button-show">Add/Edit notes</button>
         </div>
-
-      </div>
-    </div><br>
-  <% end %>
-</div>
+      </div><br>
+    <% end %>
+  </div>

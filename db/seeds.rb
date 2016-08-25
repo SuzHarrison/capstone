@@ -167,6 +167,161 @@ providers = [
     bed_count: 9,
     average_cost: 2400
   },
+  {
+    yelp_id: "hospitality-home-care-seattle-2",
+    bed_count: 4,
+    average_cost: 2500
+  },
+  {
+    yelp_id: "careful-placement-adult-family-home-agency-seattle",
+    bed_count: 5,
+    average_cost: 2400
+  },
+  {
+    yelp_id: "always-best-care-bellevue",
+    bed_count: 6,
+    average_cost: 2500
+  },
+  {
+    yelp_id: "legsmart-seattle-seattle",
+    bed_count: 7,
+    average_cost: 2200
+  },
+  {
+    yelp_id: "concierge-care-advisors-seattle",
+    bed_count: 10,
+    average_cost: 2200
+  },
+  {
+    yelp_id: "seniors-helping-seniors-seattle",
+    bed_count: 12,
+    average_cost: 1900
+  },
+  {
+    yelp_id: "andelcare-bellevue",
+    bed_count: 7,
+    average_cost: 2100
+  },
+  {
+    yelp_id: "right-at-home-seattle",
+    bed_count: 4,
+    average_cost: 1700
+  },
+  {
+    yelp_id: "mcdonald-employment-services-seattle",
+    bed_count: 12,
+    average_cost: 1700
+  },
+  {
+    yelp_id: "care-at-home-elder-care-services-seattle-2",
+    bed_count: 8,
+    average_cost: 1900
+  },
+  {
+    yelp_id: "providence-hospice-of-seattle-seattle",
+    bed_count: 14,
+    average_cost: 1900
+  },
+  {
+    yelp_id: "bayview-retirement-community-seattle-2",
+    bed_count: 14,
+    average_cost: 2900
+  },
+  {
+    yelp_id: "horizon-house-seattle-3",
+    bed_count: 10,
+    average_cost: 3000
+  },
+  {
+    yelp_id: "ida-culver-house-ravenna-seattle-2",
+    bed_count: 11,
+    average_cost: 2800
+  },
+  {
+    yelp_id: "park-shore-retirement-community-seattle-seattle",
+    bed_count: 24,
+    average_cost: 2900
+  },
+  {
+    yelp_id: "skyline-at-first-hill-seattle",
+    bed_count: 18,
+    average_cost: 3100
+  },
+  {
+    yelp_id: "mirabella-seattle-seattle-2",
+    bed_count: 20,
+    average_cost: 3400
+  },
+  {
+    yelp_id: "merrill-gardens-at-first-hill-seattle-2",
+    bed_count: 28,
+    average_cost: 3300
+  },
+  {
+    yelp_id: "norse-home-seattle-2",
+    bed_count: 17,
+    average_cost: 2900
+  },
+  {
+    yelp_id: "the-hearthstone-seattle",
+    bed_count: 26,
+    average_cost: 3000
+  },
+  {
+    yelp_id: "keiro-nursing-home-seattle",
+    bed_count: 16,
+    average_cost: 2900
+  },
+  {
+    yelp_id: "the-summit-at-first-hill-seattle",
+    bed_count: 24,
+    average_cost: 3000
+  },
+  {
+    yelp_id: "european-senior-care-seattle-3",
+    bed_count: 22,
+    average_cost: 3200
+  },
+  {
+    yelp_id: "stratford-at-maple-leaf-seattle-2",
+    bed_count: 12,
+    average_cost: 3100
+  },
+  {
+    yelp_id: "nikkei-manor-seattle",
+    bed_count: 24,
+    average_cost: 2700
+  },
+  {
+    yelp_id: "northaven-retirement-apartments-seattle",
+    bed_count: 16,
+    average_cost: 3400
+  },
+  {
+    yelp_id: "university-house-wallingford-seattle",
+    bed_count: 14,
+    average_cost: 2900
+  },
+  {
+    yelp_id: "university-house-wallingford-seattle",
+    bed_count: 14,
+    average_cost: 2900
+  },
+  {
+    yelp_id: "pearly-jones-home-seattle",
+    bed_count: 12,
+    average_cost: 2900
+  },
+  {
+    yelp_id: "the-cannon-house-seattle",
+    bed_count: 10,
+    average_cost: 2500
+  },
+  {
+    yelp_id: "brookdale-admiral-heights-seattle",
+    bed_count: 16,
+    average_cost: 2800
+  },
 ]
 
 providers.each do |p|

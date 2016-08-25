@@ -40,6 +40,7 @@
 <div class="row">
   <% @results.businesses.each do |business|%>
   <!-- <div class="container"> -->
+
   <div class="col s5">
     <h4 class="header"><%= business.name %></h4>
     <h4><%= business.id %></h4>
@@ -67,18 +68,9 @@
         </div>
         <div class="card-action">
           <%= link_to "see reviews", business.url %>
-            <div class="divider"></div>
+          <div class="divider"></div>
           <%= link_to "show more details", provider_path(business.id), method: :get %>
-            <div class="divider"></div>
-          <!-- <% if current_user && (!current_user.favorited?(business)) %>
-            <%= form_tag user_favorites_path(current_user.id), method: :post do %>
-              <%= hidden_field_tag 'business.id', business.id %>
-              <%= link_to '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
-            <% end %> -->
-            <!-- <div class="divider"></div> -->
-          <!-- <% else %>
-            <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, business.id), method: :delete, class: "button info" %>
-          <% end %> -->
+
         </div><br>
       </div>
       </div>

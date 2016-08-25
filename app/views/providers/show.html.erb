@@ -32,6 +32,7 @@
                     <%= button_tag '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
                   <% end %>
                 <% else %>
+                <div class="divider"></div>
                   <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, @result.id), method: :delete, class: "button info" %>
                 <% end %>
                 <div class="divider"></div>
