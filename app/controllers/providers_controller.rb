@@ -1,4 +1,5 @@
 class ProvidersController < ApplicationController
+  before_action :must_be_logged_in
   # attr_reader :name, :phone, :url, :image_url, :rating, :rating_img_url, :location
   #
   # def initialize(data)
@@ -27,6 +28,12 @@ class ProvidersController < ApplicationController
 
     def providers_params
       params.permit(providers:[:id, :yelp_id])
+    end
+
+    def must_be_logged_in
+      if current_user.nil?
+        redirect_to '/login'
+      end
     end
 
 end

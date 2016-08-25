@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "/learn" => "welcome#learn"
   get "/logout" => "sessions#destroy", as: :logout
   get "/auth/:provider/callback" => "sessions#create"
+  get '/login' => "welcome#login"
 
   post '/' => "welcome#search_term", as: :search_term
 
