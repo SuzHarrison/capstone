@@ -303,11 +303,6 @@ providers = [
     average_cost: 2900
   },
   {
-    yelp_id: "university-house-wallingford-seattle",
-    bed_count: 14,
-    average_cost: 2900
-  },
-  {
     yelp_id: "pearly-jones-home-seattle",
     bed_count: 12,
     average_cost: 2900
