@@ -32,6 +32,7 @@ gem 'httparty'
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem 'jquery-turbolinks'
+gem 'pg'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -50,7 +51,7 @@ group :development, :test do
   gem 'rails-erd'
   gem 'better_errors'
   gem 'pry-rails'
-  gem 'sqlite3'
+
 end
 
 group :development do
@@ -63,6 +64,5 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
