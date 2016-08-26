@@ -3,7 +3,7 @@
     <span class="black-text">
       <center><h3><%= current_user.name %>'s Saved Providers</h3></center>
     </span>
-<!-- 
+<!--
     <div id="reacttest">This is react playground</div> -->
 
     <% current_user.favorites.each do |favorite| %>
@@ -41,8 +41,9 @@
             <% if favorite.notes %>
               <p><%= simple_format("Notes: " + favorite.notes) %></p>
             <% end %><br>
+          </span>
 
-            <section class="notesshow">
+            <section class="notesshow black-text">
             <%= form_for(favorite, url: user_favorite_path(favorite.user_id, favorite.id), html: {method: "patch"}) do |f| %>
               <fieldset>
                 <h8><i class="material-icons">mode_edit</i>Add a note to log:</h8>
@@ -52,7 +53,6 @@
                 </div>
                 <%= f.hidden_field :user_id, :value => session[:user_id] %>
               </fieldset>
-            </span>
               <button class="waves-effect waves-teal btn-flat"><%= f.submit class: "button info" %>
                 <i class="material-icons right">send</i>
               </button>

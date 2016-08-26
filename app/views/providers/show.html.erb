@@ -22,22 +22,25 @@
                 <% end %>
 
                 <div class="card-action">
+                <%= link_to "See More Reviews on Yelp", @result.bus_url %></p>
+                <div class="divider"></div>
                 <% if current_user %>
-                  <%= link_to '<i class="fi-pencil"></i> See my favorites'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %><br>
+                  <%= link_to 'See my favorites'.html_safe, user_favorites_path(current_user.id), method: :get, class: "button info" %><br>
                 <% end %>
                 <div class="divider"></div>
                 <% if current_user && (!current_user.favorited?(@result)) %>
                   <%= form_tag user_favorites_path(current_user.id), method: :post do %>
                     <%= hidden_field_tag 'provider_yelp_id', @result.id %>
-                    <%= button_tag '<i class="fi-plus"></i> Add to My Provider List'.html_safe, class: "button info" %><br>
+                    <%= button_tag id: "no_float", class: "waves-effect waves-teal btn-flat" do %>
+                      <i class="material-icons right">send</i>Add to My Provider List
+                    <% end %>
+
                   <% end %>
                 <% else %>
                 <div class="divider"></div>
                   <%= link_to '<i class="fi-trash"></i> Delete from favorites'.html_safe, user_favorite_path(current_user.id, @result.id), method: :delete, class: "button info" %>
                 <% end %>
-                <div class="divider"></div>
-                  <%= link_to "See More Reviews on Yelp", @result.bus_url %></p>
-                </div>
+              </div>
               </ul>
           </div>
         </div>
