@@ -47,7 +47,7 @@
 
   <div class="col s5">
     <h4 class="header"><%= business.name %></h4>
-    <h4><%= business.id %></h4>
+    <!-- <h4><%= business.id %></h4> -->
       <div class="card horizontal">
       <div class="card-image">
         <div style="padding: 1rem;">
@@ -62,9 +62,9 @@
       <div class="card-stacked">
         <div class="card-content">
           <span class="black-text">
-          <p><% business.location.display_address.each do |line| %>
-           <%= line %><br>
-          <% end %><br>
+          <p>
+          <%= business.location.address[0] %><br>
+          <%= business.location.city %>, <%= business.location.state_code %> <%= business.location.postal_code %><br>
             <%= "tel: (#{business.display_phone[3..5]}) #{business.display_phone[7..-1]}" %>
             <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
           </p>
