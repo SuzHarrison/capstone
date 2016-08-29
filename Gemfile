@@ -47,7 +47,7 @@ group :development, :test do
   gem 'minitest-vcr'
   gem 'minitest-reporters'
   gem 'minitest-rails'
-  # gem 'webmock'
+  gem 'webmock'
   gem 'rails-erd'
   gem 'better_errors'
   gem 'pry-rails'

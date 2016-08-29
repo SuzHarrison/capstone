@@ -4,14 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  uid: MyString
-  provider: MyString
-  name: MyString
-  email: MyString
-
-two:
-  uid: MyString
-  provider: MyString
-  name: MyString
-  email: MyString
+greg:
+  uid: 1
+  provider: "Google"
+  name: "Greg"
+  email: "greg@greg.com"

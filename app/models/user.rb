@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   has_many :favorites
-  has_many :comparisons
   has_many :providers,  through: :user_favorites
   validates :uid, :provider, presence: true
    #:name
