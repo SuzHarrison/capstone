@@ -8,7 +8,6 @@ class FavoriteTest < ActiveSupport::TestCase
 
     it "knows the details of a favorite", :vcr do
       return_favorite = Favorite.find_by(provider_id: 'a-helping-hand-homecare-seattle-2')
-      binding.pry
       assert_instance_of(Favorite, return_favorite)
       assert_equal return_favorite.name, "A Helping Hand Homecare"
       # assert_equal return_favorite.bed_count, 4

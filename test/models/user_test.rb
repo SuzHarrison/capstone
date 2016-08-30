@@ -17,4 +17,9 @@ class UserTest < ActiveSupport::TestCase
     refute user.valid?
     assert_not_nil user.errors[:email]
   end
+
+  test '#favorites' do
+    user = User.new(uid: 1, email: 'greg@greg.com')
+    assert_equal 1, user.favorites.count
+  end
 end

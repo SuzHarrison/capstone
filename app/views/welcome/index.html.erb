@@ -65,7 +65,9 @@
           <p>
           <%= business.location.address[0] %><br>
           <%= business.location.city %>, <%= business.location.state_code %> <%= business.location.postal_code %><br>
-            <%= "tel: (#{business.display_phone[3..5]}) #{business.display_phone[7..-1]}" %>
+            <% if business.display_phone %>
+              <%= "tel: (#{business.display_phone[3..5]}) #{business.display_phone[7..-1]}" %>
+            <% end %>
             <span class="glyphicon glyphicon-phone-alt">&nbsp;</span>
           </p>
         </span>

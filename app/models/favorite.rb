@@ -13,7 +13,9 @@ class Favorite < ActiveRecord::Base
   end
 
   def display_phone
-    yelp_info.display_phone[3..-1]
+    if yelp_info.display_phone
+      yelp_info.display_phone[3..-1]
+    end
   end
 
   def image_url
